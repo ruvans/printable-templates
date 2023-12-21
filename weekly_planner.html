@@ -17,35 +17,29 @@
 page[size="A5"] {  
   width: 14.8cm;
   height: 21cm; 
-  
 }
 
-.top_grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr;
-  width:14.8cm;
-}
 
 .todo_grid {
-display: grid;
-grid-template-columns: auto;
-grid-template-rows: 20px, 100px;
-grid-row-gap: 0px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 50px 40px 40px;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
 }
 
 .weekly-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(2, 1fr);
-grid-column-gap: 0px;
-grid-row-gap: 0px;
-width:14.8cm;
-height: 15cm;
-border: solid;
-border-width:2px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width:14.8cm;
+  height: 15cm;
+  border: solid;
+  border-width:2px;
 }
-
 
 .day-box{
   border-bottom: solid;
@@ -57,16 +51,31 @@ border-width:2px;
   grid-template-rows: 2;
   border:solid;
   border-width:1px;
+  position: relative;
+}
+
+.day-lines{
+  display: block;
+  margin: 0 auto;
+  left: 2%;
+  width: 96%;
 }
 
 p {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  line-height: 10px;
+
+}
+
 h2{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  line-height: 0px;
+  line-height: 2px;
 }
 
 h3{
@@ -75,110 +84,161 @@ h3{
   line-height: 0px;
   text-align: center;
 }
+
+.br { 
+  display: block; 
+  margin-bottom: 30px; 
+} 
+
+.br-smaller { 
+  display: block; 
+  margin-bottom: 10px; 
+} 
+
+.flex-todo-line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  align-items: normal;
+  align-content: normal;
+  height: 35px;
+  width:14.8cm;
+}
+
+.flex-week-line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  align-items: stretch;
+  align-content: flex-start;
+  width:14.8cm;
+  height: 1cm;
+}
+
+.flex-week-itemtext {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.flex-week-itemline {
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
 </style>
 
 <page size="A5">
-<h1>January 1-10</h1>
-<div class="top_grid">
-
-  <div class="todo-grid">
-    <div><h2>To do</h2></div>
-    <div>
-      <div>
-  	    <svg width="30" height="20"> <rect x="7" y="2" width="16" height="16" style="fill:transparent;stroke:rgb(0,0,0);stroke-width:2" /> </svg>
-  	    <svg width="300" height="30"> <line x1="0" y1="28" x2="1000" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg>
-  	  </div>
-      <div>
-  	    <svg width="30" height="20"> <rect x="7" y="2" width="16" height="16" style="fill:transparent;stroke:rgb(0,0,0);stroke-width:2" /> </svg>
-  	    <svg width="300" height="20"> <line x1="0" y1="18" x2="1000" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg>
-  	  </div>
-      <div>
-  	    <svg width="30" height="20"> <rect x="7" y="2" width="16" height="16" style="fill:transparent;stroke:rgb(0,0,0);stroke-width:2" /> </svg>
-  	    <svg width="300" height="20"> <line x1="0" y1="18" x2="1000" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg>
-  	  </div>
-    </div>
-  </div>
-  <div>Calendar</div>
+<span class="br-smaller"></span>
+<div class="flex-week-line">
+  <div class="flex-week-itemtext"><h1>Week:</h1></div>
+  <div class="flex-week-itemline"><svg height="100%" width="100%" > <line x1="5" x2="100%" y1="32" y2="32" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
 </div>
-<br>
+<span class="br"></span>
+<h2>To do</h2>
+<span class="br"></span>
+<div class="todo-grid">
+  <div class="flex-todo-line">
+    <svg width="7%" > <rect x="7" y="2" width="20" height="20" style="fill:transparent;stroke:rgb(0,0,0);stroke-width:2" /> </svg>
+    <svg width="100%" > <line x1="0" y1="22" x2="1000" y2="22" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg>
+  </div>
+  <div class="flex-todo-line">
+    <svg width="7%" > <rect x="7" y="2" width="20" height="20" style="fill:transparent;stroke:rgb(0,0,0);stroke-width:2" /> </svg>
+    <svg width="100%" > <line x1="0" y1="22" x2="1000" y2="22" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg>
+  </div>
+  <div class="flex-todo-line">
+    <svg width="7%" > <rect x="7" y="2" width="20" height="20" style="fill:transparent;stroke:rgb(0,0,0);stroke-width:2" /> </svg>
+    <svg width="100%" > <line x1="0" y1="22" x2="1000" y2="22" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg>
+  </div>
+</div>
+<span class="br-smaller"></span>
 <h2>Notes</h2>
+<span class="br"></span>
 <div class="weekly-grid">
   <div class="grid-day"><div class="day-box"><h3>Monday</h3></div>
     <div>
-	  <div><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
     </div>
   </div>
   <div class="grid-day"><div class="day-box"><h3>Tuesday</h3></div>
     <div>
-	  <div><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
     </div>
   </div>
   <div class="grid-day"><div class="day-box"><h3>Wednesday</h3></div>
     <div>
-	  <div><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
     </div>
   </div>
   <div class="grid-day"><div class="day-box"><h3>Thursday</h3></div>
-    <div>
-	  <div><svg width="200%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+    <div >
+	  <div class="day-lines"><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
     </div>
   </div>
   <div class="grid-day"><div class="day-box"><h3>Friday</h3></div>
     <div>
-	  <div><svg width="200%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="200%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
     </div>
   </div>
   <div class="grid-day"><div class="day-box"><h3>Saturday/Sunday</h3></div>
     <div>
-	  <div><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-      <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
-	  <div><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="30"> <line x1="0" y1="28" x2="200" y2="28" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+      <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
+	  <div class="day-lines"><svg width="100%" height="20"> <line x1="0" y1="18" x2="200" y2="18" style="stroke:rgb(216,216,216);stroke-width:2" /> </svg></div>
     </div>
   </div>
 </div>
