@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<style>
+page[size="A4"] {  
+  width: 29.7cm;
+  height: 21cm;
+}
+
+.a5-style{
+  width: 100%;
+  height: 100%
+
+}
+
+.page-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 70px;
+grid-row-gap: 0px;
+margin-left: 20px;
+margin-right: 20px;
+
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+
+h3 {
+font-size: 24px;
+}
+</style>
+
+
+
+<body>
+<page size="A4">
+
+<div class="page-grid">
+  <div class="a5-style"><!-- A5 -->
+    <h3>Month:</h3>
+    <canvas id="pg1Canvas" ></canvas>
+  </div>
+  <div class="a5-style"><!-- A5 -->
+    <h3>Month:</h3>
+    <canvas id="pg2Canvas" ></canvas>
+  </div>
+</div>
+
+
+
+</page>
+
+<script>
+
+function drawTable(canvas)
+{
+const ctx = canvas.getContext("2d");
+window.devicePixelRatio=2;
+canvas.style.width = 500 + "px";
+canvas.style.height = 620 + "px";
+
+const linegap = 30;
+const line_thickness = 2;
+const lines = 19;
+const bottom = linegap*lines;
+var scale = window.devicePixelRatio; 
+canvas.width = Math.floor(500 * scale);
+canvas.height = Math.floor(620 * scale);
+const width = 500
+const height = 620
+
+//CSS pixels for coordinate systems 
+ctx.scale(scale, scale);
+//ctx.fillStyle = "Gainsboro";
+//ctx.fillRect(1,1,width,linegap);
+
+ctx.lineWidth = line_thickness;
+ctx.strokeStyle = "black";
+
+ctx.beginPath();
+ctx.rect(1,1,width-line_thickness, bottom);
+ctx.stroke();
+
+//horizontal lines
+liney = 0;
+for (let i = 0; i < lines; i++) { 
+  ctx.beginPath();
+  ctx.moveTo(0, liney);
+  ctx.lineTo(width, liney);
+  ctx.stroke();
+  liney = liney + linegap;
+}
+//vertical lines
+const small_column_width = 70;
+const vertical_xs = [small_column_width, width-small_column_width*2, width-small_column_width];
+for (let i = 0; i < vertical_xs.length; i++)
+{
+  ctx.beginPath();
+  ctx.moveTo(vertical_xs[i], 0);
+  ctx.lineTo(vertical_xs[i], bottom);
+  ctx.stroke();
+}
+
+ctx.fillStyle = "black";
+ctx.textAlign = "center";
+ctx.font = "18px Arial";
+const text_y = 22;
+datex = vertical_xs[0]/2;
+descx = (vertical_xs[1] - vertical_xs[0]) /2 + vertical_xs[0];
+inx = (vertical_xs[2] - vertical_xs[1]) /2 + vertical_xs[1];
+outx = (width - vertical_xs[2]) /2 + vertical_xs[2];
+ctx.fillText("Date", datex, text_y); 
+ctx.fillText("Description", descx, text_y);
+ctx.fillText("In", inx, text_y);
+ctx.fillText("Out", outx, text_y);
+
+//totals
+const totaly = bottom+10;
+const total_column_width = 120;
+//ctx.fillStyle = "Gainsboro";
+//ctx.fillRect(1,totaly,total_column_width,linegap);
+//ctx.fillRect(width/2,totaly,total_column_width,linegap);
+
+ctx.fillStyle = "black";
+ctx.beginPath();
+ctx.rect(1,totaly ,width-line_thickness, linegap);
+ctx.stroke();
+
+//totalin line
+ctx.beginPath();
+ctx.moveTo(total_column_width, totaly);
+ctx.lineTo(total_column_width, totaly+linegap);
+ctx.stroke();
+//middle line
+ctx.beginPath();
+ctx.moveTo(width/2, totaly);
+ctx.lineTo(width/2, totaly+linegap);
+ctx.stroke();
+//totalout line
+ctx.beginPath();
+ctx.moveTo(width - small_column_width*2, totaly);
+ctx.lineTo(width - small_column_width*2, totaly+linegap);
+ctx.stroke();
+
+
+ctx.fillText("Total in", total_column_width/2, totaly + 22)
+ctx.fillText("Total out", ((width/2 - small_column_width*2) /2) + width/2 , totaly + 22)
+}
+
+const canvas = document.getElementById("pg1Canvas");
+drawTable(canvas)
+const canvas2 = document.getElementById("pg2Canvas");
+drawTable(canvas2)
+
+
+
+</script>
+</body>
