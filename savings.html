@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<style>
+page[size="A4"] {  
+  width: 29.7cm;
+  height: 21cm;
+}
+
+.a5-style{
+  width: 100%;
+  height: 100%
+
+}
+
+.page-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 70px;
+grid-row-gap: 0px;
+margin-left: 20px;
+margin-right: 20px;
+
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+
+h3 {
+font-size: 24px;
+text-align: center;
+}
+
+.gridtop {
+display: grid;
+grid-template-columns: auto 100px auto 100px;
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+border: solid;
+border-width: 2px;
+
+}
+
+.topcell
+{
+padding: 10px;
+border-right:2px solid;
+text-align:center;
+}
+
+</style>
+
+
+
+<body>
+<page size="A4">
+
+<div class="page-grid">
+  <div class="a5-style"><!-- A5 -->
+    <h3>Savings</h3>
+    <div class="gridtop">
+    <div class="topcell">Starting balance</div>
+    <div class="topcell"></div>
+    <div class="topcell">Saving target</div>
+    <div></div>
+    </div>
+    </br>
+    <canvas id="pg1Canvas" ></canvas>
+  </div>
+  <div class="a5-style"><!-- A5 -->
+  </div>
+</div>
+
+
+
+</page>
+
+<script>
+
+
+const canvas = document.getElementById("pg1Canvas");
+const ctx = canvas.getContext("2d");
+window.devicePixelRatio=2;
+canvas.style.width = 500 + "px";
+canvas.style.height = 620 + "px";
+
+const line_thickness = 2;
+var scale = window.devicePixelRatio; 
+canvas.width = Math.floor(500 * scale);
+canvas.height = Math.floor(620 * scale);
+const width = 500
+const height = 620
+ctx.scale(scale, scale);
+
+ctx.lineWidth = line_thickness;
+ctx.strokeStyle = "black";
+
+//border for now
+ctx.beginPath();
+ctx.rect(0,0, width, height);
+//ctx.stroke();
+
+//logging grid
+gridx = 2;
+gridy = 2;
+gridheight = height-2;
+gridwidth = 370;
+const vertical_xs = [2, 123, 246, 370];
+for (let i = 0; i < vertical_xs.length; i++)
+{
+  ctx.beginPath();
+  ctx.moveTo(vertical_xs[i], gridy);
+  ctx.lineTo(vertical_xs[i], gridheight);
+  ctx.stroke();
+}
+gridlinestotal = 20;
+gap = (gridheight / gridlinestotal)
+for (let y = 2; y < gridheight; y+=gap)
+{
+  ctx.beginPath();
+  ctx.moveTo(gridx, y);
+  ctx.lineTo(gridwidth, y);
+  ctx.stroke();
+}
+ctx.beginPath();
+ctx.moveTo(gridx, gridheight);
+ctx.lineTo(gridwidth, gridheight);
+ctx.stroke();
+//logging titles
+ctx.textAlign = "center";
+ctx.font = "18px Arial";
+titles = ["Date", "Amount", "Balance"];
+titlex = [60, 184, 308];
+titley = 24;
+for (let i = 0; i < titles.length; i++)
+{
+ctx.fillText( titles[i], titlex[i], titley)
+}
+
+//savings bar
+barwidth = 50;
+barx = width - barwidth - 2;
+bartop = 2;
+barheight = height - bartop*2;
+barradius = barwidth/2
+
+ctx.beginPath();
+//.arc(x, y, radius, start Angle, end Angle, counterclockwise-optional)
+//angles is in radians
+ctx.arc(barx + barradius, bartop + barradius, barradius, 1 * Math.PI, 0);
+ctx.arc(barx + barradius, barheight - barradius + bartop, barradius, 0, 1 * Math.PI);
+ctx.closePath();
+ctx.stroke();
+
+
+//bar lines
+totallines = 20;
+linesx = barx;
+linegap = (height - barwidth)/totallines;
+
+measurelinesx = barx - 20;
+measurepercentgap = (100 / totallines);
+ctx.font = "12px Arial";
+percentage = 100;
+for (let y = barradius+linegap/2; y < height-barradius; y+=linegap){
+  ctx.setLineDash([2, 4]);
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(linesx, y);
+  ctx.lineTo(linesx + barwidth, y);
+  ctx.stroke();
+
+  ctx.setLineDash([]);
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(measurelinesx+5, y);
+  ctx.lineTo(measurelinesx+15, y);
+  ctx.stroke();
+  ctx.textAlign = "right"; 
+  ctx.fillText( percentage +"%", measurelinesx, y);
+  percentage -= measurepercentgap;
+
+}
+
+</script>
+</body>
